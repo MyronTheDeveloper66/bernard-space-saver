@@ -1,0 +1,73 @@
+<div id="form-page">
+  <app-navbar></app-navbar>
+
+  <div id="form-body" class="row text-center">
+    <div class="col-lg-4 offset-4">
+      <h1 class="text-center">Email Form</h1>
+
+      <form #emailForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <!-- First name -->
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control mb-3" 
+            id="firstName" required minlength="2"
+            [(ngModel)]="emailForSend.firstName" name="firstName"
+            #firstName="ngModel"
+          >
+          <!-- First name validation-->
+          <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger">
+            <div *ngIf="firstName.errors.required">
+              First name is required
+            </div>
+            <div *ngIf="firstName.errors.minlength">
+              First name must be at least 2 characters long
+            </div>
+          </div>
+          <!-- Last name -->
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control mb-3" minlength="4"
+            id="lastName" [(ngModel)]="emailForSend.lastName" 
+            name="lastName" #lastName="ngModel">
+          <!-- Last name validation -->
+          <div *ngIf="lastName.invalid && lastName.touched" class="alert alert-danger">
+            <div *ngIf="lastName.errors.minlength">
+              Last name must be at least 4 characters long
+            </div>
+          </div>
+          <!-- Email -->
+          <label for="email">Email</label>
+          <input type="text" class="form-control mb-3" 
+          id="email" required 
+          [(ngModel)]="emailForSend.email" name="email"
+          #email="ngModel"
+          >
+          <!-- Email validation -->
+          <div *ngIf="email.invalid && email.touched" class="alert alert-danger">
+            <div *ngIf="email.errors.required">
+              A valid email address is required.
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-group" id="productForms">
+          <!-- Product selection -->
+          <app-product-form></app-product-form>
+          <ng-template appProductDirective></ng-template>
+          <button class="btn " type="button" (click)="newProduct()">Add Another Product</button>
+          <button *ngIf="this.productContainerRef.length > 0" class="btn btn-danger" type="button" 
+          (click)="removeProduct()">
+            Remove a Product
+          </button>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="comments">Additional Comments</label>
+          <textarea [(ngModel)]="emailForSend.comments" name="comments" id="comments" class="form-control"></textarea>
+        </div>
+        <button [disabled]="emailForm.invalid || emailForm.pristine" type="submit" class="btn mb-2">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

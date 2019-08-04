@@ -1,0 +1,36 @@
+@import 'variables'; 
+
+#opening-space{
+    background-size: cover;
+    background-image: url('../../../../assets/images/2_After_Front_View.jpg');
+    background-position: 40%;
+    height: 98vh;
+    
+    .dark-overlay{
+        background-color: rgba($void, 0.375);
+        height: 98vh;
+        overflow: auto;
+    }
+
+    h3 {
+        color: $stark;
+        font-size: 4em;
+        margin-top: 10%;
+    }
+
+    p {
+        color: $stark;
+        font-size: 1.2em;
+    }
+}
+
+#cta {
+    background-color: $void;
+    color: $stark;
+    height: 35vh;
+    overflow: auto;
+
+    h3 {
+        margin-top: 5%;
+    }
+}

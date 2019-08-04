@@ -1,0 +1,31 @@
+<div *ngIf="products$ | async; let products">
+  <label for="products">Products</label>
+  <select id="products" class="form-control mb-3"
+    name="productName" [(ngModel)]="customerSelection.productName"
+    #productName="ngModel" (change)="setSelectedProduct(customerSelection.productName)"
+  >
+    <option *ngFor="let product of products" [value]="product.name">
+      {{product.name}}
+    </option>
+  </select>
+  <div *ngIf="selectedProduct$ | async; let selectedProduct">
+    <div class="measurements" *ngIf="customerSelection.productName">
+      <label for="measurements">Measurements</label>
+      <select id="measurements" class="form-control mb-3"
+        name="measurements" [(ngModel)]="customerSelection.measurements"
+        #measurements="ngModel" 
+      >
+        <option *ngFor="let measurement of selectedProduct.measurements" value="{{measurement}}">
+          {{measurement}}
+        </option>
+      </select>
+    </div>
+    <div class="quantity" *ngIf="customerSelection.productName">
+      <label for="quantity">Qty</label>
+      <input type="number" class="form-control mb-3"
+        name="quantity" [(ngModel)]="customerSelection.quantity"
+        #quantity="ngModel"
+      >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+@import 'variables';
+
+#form-page {
+    background-color: $jewel;
+    color: $stark;
+
+    button {
+        background-color: $void;
+        color: $stark;
+        margin: 0 auto;
+    }
+}

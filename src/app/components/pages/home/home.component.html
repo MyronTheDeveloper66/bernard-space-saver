@@ -1,0 +1,19 @@
+<div>
+  <div id="opening-space" class="text-center">
+    <div class="dark-overlay">
+      <app-navbar></app-navbar>
+      <div id="text-box">
+        <h3>Welcome to Bernard Space-Saver</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut in rerum recusandae praesentium! Ab, corrupti! Consectetur veritatis nam, ullam maiores amet blanditiis aspernatur assumenda sapiente a doloremque atque eligendi odit? Perferendis magni, numquam at fuga sint possimus vitae aliquam sed ratione veritatis, modi iste soluta.</p>
+      </div>
+    </div>
+  </div>
+  <div id="cta" class="text-center">
+    <h3>Please browse our products below</h3>
+  </div>
+  <div class="row" *ngIf="products">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 p-0" *ngFor="let product of products">
+      <app-product-card [product]="product"></app-product-card>
+    </div>
+  </div>
+</div>
