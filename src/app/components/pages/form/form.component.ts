@@ -8,7 +8,6 @@ import { Product } from '../../../models/Product';
 import { CustomerSelection } from '../../../models/CustomerSelection';
 
 import { ProductService } from '../../../services/product-service.service';
-import * as emailJs from 'emailjs-com';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -53,17 +52,13 @@ export class EmailFormComponent implements OnInit {
     if(this.productComponents.length > 0) {
       this.productComponents.forEach(productComponent => this.emailForSend.products.push(productComponent.instance["customerSelection"]));
     }
-    emailJs.send("gmail", "customer_quote", 
-    {
+    
+    this.productService.sendEmail({
       firstName: this.emailForSend.firstName,
       lastName: this.emailForSend.lastName,
       email: this.emailForSend.email,
       products: this.createProductTemplate(this.emailForSend),
       comments: this.emailForSend.comments
-    }, "user_nUvsa0T3X7KGWlMOOx7kE").then(res => {
-      console.log('Success!', res.status, res.text);
-    }, err => {
-      console.log("Failed...", err);
     });
   }
 
@@ -90,5 +85,4 @@ export class EmailFormComponent implements OnInit {
     });
     return output;
   }
-
 }
