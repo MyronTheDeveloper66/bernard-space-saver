@@ -18,7 +18,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./form.component.scss']
 })
 export class EmailFormComponent implements OnInit {
-  @ViewChild(ProductDirective, {static: false}) productDirective: ProductDirective;
+  @ViewChild(ProductDirective, {static: true}) productDirective: ProductDirective;
   @ViewChild(ProductFormComponent, {static: false}) productComponent: ProductFormComponent;
 
   emailForSend: Email = {
