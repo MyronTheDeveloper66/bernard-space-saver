@@ -16,6 +16,7 @@ import { ProductsComponent } from './components/pages/products/products.componen
 import { EmailFormComponent } from './components/pages/form/form.component';
 import { ProductFormComponent } from './components/pages/form/product-form/product-form.component';
 import { ProductDirective } from './directives/product-directive.directive';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProductDirective } from './directives/product-directive.directive';
     EmailFormComponent,
     ProductsComponent,
     ProductFormComponent,
-    ProductDirective
+    ProductDirective,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
