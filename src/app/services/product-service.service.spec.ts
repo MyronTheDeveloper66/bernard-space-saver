@@ -44,4 +44,21 @@ describe('ProductService', () => {
     req.flush(Object.values(PRODUCTS));
   });
 
+  it('should retrieve one product', () => {
+    productService.getSelectedProduct('hanging').subscribe(products => {
+      expect(products).toBeTruthy('No product returned');
+      expect(products.length).toBe(1)
+
+      const product = products[0];
+
+      expect(product.name).toEqual('Hanging Rack');
+    });
+
+    const req = httpTestingController.expectOne(filePath);
+
+    expect(req.request.method).toEqual('GET');
+
+    req.flush(Object.values(PRODUCTS));
+  });
+
 });
