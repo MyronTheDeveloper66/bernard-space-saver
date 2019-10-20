@@ -22,20 +22,20 @@ export class ProductService {
   }
 
   getSelectedProduct(short_name: string) {
-    let allProducts = this.getInventory();
+    const allProducts = this.getInventory();
     return allProducts.pipe(
-      map(products => products.filter(product => product["link_name"] == short_name))
+      map(products => products.filter(product => product['link_name'] === short_name))
     );
   }
 
   sendEmail(emailObject: any) {
-    emailJs.send("my_email_service", "customer_quote", emailObject,  "user_nUvsa0T3X7KGWlMOOx7kE").then(res => {
-      this.alertService.success(`${res.text}`)
+    emailJs.send('my_email_service', 'customer_quote', emailObject,  'user_nUvsa0T3X7KGWlMOOx7kE').then(res => {
+      this.alertService.success(`${res.text}`);
       setTimeout(() => {
-        this.alertService.clear()
+        this.alertService.clear();
       }, 5000);
     }, err => {
-      this.alertService.error(`The email did not send because of ${err.text}`)
+      this.alertService.error(`The email did not send because of ${err.text}`);
     });
   }
 }
