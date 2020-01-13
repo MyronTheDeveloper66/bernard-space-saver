@@ -33,7 +33,9 @@
               "./node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/sass"]
+              "includePaths": [
+                "src/sass"
+              ]
             },
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
@@ -106,6 +108,10 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     },
